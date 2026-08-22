@@ -11,3 +11,32 @@ dependencies = [
     "sqlalchemy>=2.0.52",
     "uvicorn[standard]>=0.52.3",
 ]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.16.4",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+
+[tool.ruff.lint]
+select = [
+    "E",      # pycodestyle
+    "W",      # pycodestyle warnings
+    "F",      # pyflakes
+    "I",      # import sorting
+    "UP",     # pyupgrade
+    "B",      # flake8-bugbear
+    "SIM",    # flake8-simplify
+]
+
+ignore = [
+    "E501",   # line length handled by formatter
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"
