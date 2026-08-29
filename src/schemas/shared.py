@@ -3,7 +3,7 @@ from enum import StrEnum
 from pydantic import BaseModel
 
 
-class Currency(StrEnum):
+class CurrencyEnum(StrEnum):
     RUB = "rub"
     USD = "usd"
     EUR = "eur"
@@ -11,10 +11,10 @@ class Currency(StrEnum):
 
 class Price(BaseModel):
     amount: int
-    currency: Currency
+    currency: CurrencyEnum
 
 
-class Gender(StrEnum):
+class GenderEnum(StrEnum):
     MAN = "man"
     WOMAN = "woman"
     UNISEX = "unisex"

@@ -1,4 +1,4 @@
-from sqlalchemy import Enum, String
+from sqlalchemy import String
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -6,7 +6,7 @@ from src.db.models.__mixin__ import IdMixin
 from src.db.models.association import products_brands
 from src.db.models.base import Base
 from src.db.models.brand import Brand
-from src.schemas.shared import Currency, Gender
+from src.schemas.shared import CurrencyEnum, GenderEnum
 
 
 class Product(Base, IdMixin):
@@ -23,16 +23,14 @@ class Product(Base, IdMixin):
     )
 
     price_amount: Mapped[int]
-    price_currency: Mapped["Currency"] = mapped_column(
-        Enum(Currency),
-        default=Currency.RUB,
+    price_currency: Mapped["CurrencyEnum"] = mapped_column(
+        default=CurrencyEnum.RUB,
         nullable=False,
     )
 
     color: Mapped[str | None]
-    gender: Mapped["Gender"] = mapped_column(
-        Enum(Gender),
-        default=Gender.UNISEX,
+    gender: Mapped["GenderEnum"] = mapped_column(
+        default=GenderEnum.UNISEX,
         nullable=False,
     )
     size: Mapped[str | None]

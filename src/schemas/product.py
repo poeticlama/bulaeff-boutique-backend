@@ -5,7 +5,7 @@ from uuid import UUID
 from pydantic import BaseModel, StringConstraints
 
 from src.schemas.brand import Brand
-from src.schemas.shared import Gender, Price
+from src.schemas.shared import GenderEnum, Price
 
 Article = Annotated[str, StringConstraints(min_length=6, max_length=6, to_upper=True)]
 
@@ -29,6 +29,6 @@ class BaseProduct(BaseModel):
     brands: list[Brand]
     price: Price
     color: str | None = None
-    gender: Gender
+    gender: GenderEnum
     size: str
     measurements: dict[str, int | float] | None = None
